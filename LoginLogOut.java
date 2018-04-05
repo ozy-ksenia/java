@@ -6,14 +6,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LoginLogOut {
-	private WebDriver driver; // WebDriver is container which contains a driver
-	private String baseUrl;
+	private WebDriver driver;
+	private String baseUrl = "http://.........com";
 
 	@Before
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "geckodriver");
-		driver = new FirefoxDriver();  // FirefoxDriver() is object
-		baseUrl = "http://hrm.seleniumminutes.com"; // object
+		driver = new FirefoxDriver();  
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -25,12 +24,12 @@ public class LoginLogOut {
 	@Test
 	public void test() {
 		driver.get(baseUrl);
-		driver.findElement(By.id("txtUsername")).sendKeys("admin");           //input username
-		driver.findElement(By.id("txtPassword")).sendKeys("Password");        //input password
-		driver.findElement(By.id("btnLogin")).click();                        //click Login button
+		driver.findElement(By.id("txtUsername")).sendKeys("test");          
+		driver.findElement(By.id("txtPassword")).sendKeys("test");        
+		driver.findElement(By.id("btnLogin")).click();                       
 		
-		String actualWelcome = driver.findElement(By.id("welcome")).getText(); //receive a text "Welcome ...." 
-		assertEquals("Welcome Admin", actualWelcome);                          //expected and actual results
+		String actualWelcome = driver.findElement(By.id("welcome")).getText(); 
+		assertEquals("Welcome Admin", actualWelcome);                         
 	
 		// Log out
 		sleep(1);
