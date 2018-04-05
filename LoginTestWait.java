@@ -1,10 +1,7 @@
 
 import java.util.concurrent.TimeUnit;
-
 import org.junit.*;
-
 import static org.junit.Assert.*;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +17,7 @@ public class LoginTestWait {
 		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		driver = new FirefoxDriver();
 		wait = new WebDriverWait(driver, 5);
-		baseUrl = "http://hrm.seleniumminutes.com";
+		baseUrl = "http://...........com";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -32,8 +29,8 @@ public class LoginTestWait {
 	@Test
 	public void validLogin() {
 		driver.get(baseUrl);
-		driver.findElement(By.id("txtUsername")).sendKeys("admin");
-		driver.findElement(By.id("txtPassword")).sendKeys("Password");
+		driver.findElement(By.id("txtUsername")).sendKeys("test");
+		driver.findElement(By.id("txtPassword")).sendKeys("test");
 		driver.findElement(By.id("btnLogin")).click();
 		
 		String actualWelcome = driver.findElement(By.id("welcome")).getText();
@@ -45,6 +42,5 @@ public class LoginTestWait {
 		driver.findElement(By.linkText("Logout")).click();
 		
 	}
-
 
 }
