@@ -8,7 +8,7 @@ import Template.General;
 
 public class LoginTesInClass {
 	private WebDriver driver;
-	private String baseUrl = "http://hrm.seleniumminutes.com";
+	private String baseUrl = "http://...........com";
 
 	@Before
 	public void setUp() throws Exception {
@@ -22,51 +22,56 @@ public class LoginTesInClass {
 	public void tearDown() throws Exception {
 		driver.quit();	}
 	
+	// positive test
 	@Test
 	public void testValidLogin() {	
-		General.login(driver, "admin", "Password");
+		General.login(driver, "test", "test");
 		
 		String actualGreeting = driver.findElement(By.id("welcome")).getText();
 		assertEquals("Welcome Admin", actualGreeting);
 	}
 	
+	// invalid username
 	@Test
 	public void testInvalidUsername() {
 		String expected = "Invalid credentials";
-		String invalid = "abcdef";
+		String invalid = "qwerty";
 		
-		General.login(driver, invalid, "Password");
+		General.login(driver, invalid, "test");
 		
 		String actualMessage = driver.findElement(By.id("spanMessage")).getText();
 		assertEquals(expected, actualMessage);
 	}
 	
+	// invalid password
 	@Test
 	public void testInvalidPassword() {
 		String expected = "Invalid credentials";
-		String invalid = "abcdef";
+		String invalid = "qwerty";
 		
-		General.login(driver, "admin", invalid);
+		General.login(driver, "test", invalid);
 		
 		String actualMessage = driver.findElement(By.id("spanMessage")).getText();
 		assertEquals(expected, actualMessage);
 	}
 	
+	// empty username
 	@Test
 	public void testEmptyUsername() {
 		String expected = "Username cannot be empty";
 		
-		General.login(driver, "", "Password");
+		General.login(driver, "", "test");
 		
 		String actualMessage = driver.findElement(By.id("spanMessage")).getText();
 		assertEquals(expected, actualMessage);
 	}
 	
+	// empty password
 	@Test
 	public void testEmptyPassword() {
 		String expected = "Password cannot be empty";
 		
-		General.login(driver, "admin", "");
+		General.login(driver, "test", "");
 		
 		String actualMessage = driver.findElement(By.id("spanMessage")).getText();
 		assertEquals(expected, actualMessage);
