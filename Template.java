@@ -16,7 +16,7 @@ public class Template {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		driver = new FirefoxDriver();
-		baseUrl = "http://hrm.seleniumminutes.com";
+		baseUrl = "http://.............com";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
