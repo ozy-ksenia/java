@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-// Login for OrangeHRM (Invalid username/password, empty username/password)
-
 public class LoginTest {
 	private WebDriver driver;
 	private String baseUrl;
@@ -14,7 +12,7 @@ public class LoginTest {
    public void setUp() throws Exception {
 	   System.setProperty("webdriver.gecko.driver", "geckodriver");
 	   driver = new FirefoxDriver();
-	   baseUrl = "http://hrm.seleniumminutes.com";
+	   baseUrl = "http://..............com";
 	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
    }
 
@@ -26,8 +24,8 @@ public class LoginTest {
    @Test
    public void test() {
 	   driver.get(baseUrl);                                                   // go to
-	   driver.findElement(By.id("txtUsername")).sendKeys("admin");            // input username
-	   driver.findElement(By.id("txtPassword")).sendKeys("Password");         // input password
+	   driver.findElement(By.id("txtUsername")).sendKeys("test");            // input username
+	   driver.findElement(By.id("txtPassword")).sendKeys("test");         // input password
 	   driver.findElement(By.id("btnLogin")).click();                         // click login button
 	   String actualWelcome = driver.findElement(By.id("welcome")).getText(); // receive "welcome" text
 	   assertEquals("Welcome Admin", actualWelcome);                          // expected and actual result
@@ -39,6 +37,7 @@ public class LoginTest {
 	   driver.findElement(By.linkText("Logout")).click();
    }
    
+	//invalid username
    @Test
    public void invalidUsername() {
 	   String invalidUsername = "qwerty";
@@ -46,19 +45,20 @@ public class LoginTest {
 	   
 	   driver.get(baseUrl);
 	   driver.findElement(By.id("txtUsername")).sendKeys(invalidUsername);
-	   driver.findElement(By.id("txtPassword")).sendKeys("Password");
+	   driver.findElement(By.id("txtPassword")).sendKeys("test");
 	   driver.findElement(By.id("btnLogin")).click();
 	   sleep(3);
 	   String actualMessage = driver.findElement(By.id("spanMessage")).getText();
 	   assertEquals(expected, actualMessage);	   
    }
    
+	// empty username
    @Test
    public void emptyUsername() {
 	   String expected = "Username cannot be empty";
 	   
 	   driver.get(baseUrl);
-	   driver.findElement(By.id("txtPassword")).sendKeys("Password");
+	   driver.findElement(By.id("txtPassword")).sendKeys("test");
 	   driver.findElement(By.id("btnLogin")).click();
 	   sleep(3);
 	   String actualMessage = driver.findElement(By.id("spanMessage")).getText();
@@ -66,13 +66,14 @@ public class LoginTest {
 	   assertEquals(message, expected, actualMessage);	   
    }
    
+	// invalid password
    @Test
    public void invalidPassword() {
 	   String invalidPassword = "qwerty";
 	   String expected = "Invalid credentials";
 	   
 	   driver.get(baseUrl);
-	   driver.findElement(By.id("txtUsername")).sendKeys("admin");
+	   driver.findElement(By.id("txtUsername")).sendKeys("test");
 	   driver.findElement(By.id("txtPassword")).sendKeys(invalidPassword);
 	   driver.findElement(By.id("btnLogin")).click();
 	   sleep(3);
@@ -80,12 +81,13 @@ public class LoginTest {
 	   assertEquals(expected, actualMessage);	   
    }
    
+	// empty password
    @Test
    public void emptyPassword() {
 	   String expected = "Password cannot be empty";
 	   
 	   driver.get(baseUrl);
-	   driver.findElement(By.id("txtUsername")).sendKeys("admin");
+	   driver.findElement(By.id("txtUsername")).sendKeys("test");
 	   driver.findElement(By.id("btnLogin")).click();
 	   sleep(3);
 	   String message = driver.findElement(By.id("spanMessage")).getText();
