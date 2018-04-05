@@ -1,10 +1,7 @@
 
 import java.util.concurrent.TimeUnit;
-
 import org.junit.*;
-
 import static org.junit.Assert.*;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -16,7 +13,7 @@ public class LoginTemplate {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		driver = new FirefoxDriver();
-		baseUrl = "http://hrm.seleniumminutes.com";
+		baseUrl = "http://...........com";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -38,5 +35,4 @@ public class LoginTemplate {
 			e.printStackTrace();
 		}
 	}
-
 }
