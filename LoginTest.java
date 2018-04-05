@@ -20,7 +20,8 @@ public class LoginTest {
    public void tearDown() throws Exception {
 	   driver.quit();
    }
-
+	
+	// positive test
    @Test
    public void test() {
 	   driver.get(baseUrl);                                                   // go to
