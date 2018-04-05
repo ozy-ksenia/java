@@ -15,7 +15,7 @@ import Template.General;
 
 public class LocatorsTest {
 	WebDriver driver;
-	String baseUrl = "http://hrm-online.portnov.com";
+	String baseUrl = "http://...........com";
 
 	@Before
 	public void setUp() throws Exception {
@@ -32,7 +32,7 @@ public class LocatorsTest {
 
 	@Test
 	public void test() {
-		General.login(driver, "admin", "password");
+		General.login(driver, "test", "test");
 		driver.findElement(By.id("menu_leave_viewLeaveModule")).click();
 		// OTHER Locators
 		// driver.findElement(By.className("firstLevelMenu")).click();
@@ -41,11 +41,7 @@ public class LocatorsTest {
 		// looking for LOGO
 		String width = driver.findElement(By.cssSelector("#branding>img")).getAttribute("width");
 		String height = driver.findElement(By.xpath("//*[@id='branding']/img")).getAttribute("height");
-		
-		// not the best way
-		//assertEquals(283, (int) Integer.valueOf(width));
 
-		// better
 		assertEquals("283", width);
 		assertEquals("56", height);
 				
@@ -53,7 +49,6 @@ public class LocatorsTest {
 		Dimension size = driver.findElement(By.tagName("img")).getSize();
 		assertEquals(283, size.width);
 		assertTrue(size.height == 56);
-		
 
 		Point location = driver.findElement(By.xpath("//*[@id='branding']//*[@alt='OrangeHRM']")).getLocation();
 		// top left corner
@@ -61,7 +56,6 @@ public class LocatorsTest {
 		assertTrue(location.y < 40);
 		
 		// check that logo fits within left half of the document
-		
 		int documentWidth = driver.findElement(By.tagName("body")).getSize().width;
 		
 		// width + x
